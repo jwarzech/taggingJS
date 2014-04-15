@@ -99,7 +99,7 @@
         };
 
         /**
-         * Remov a tag
+         * Remove a tag
          *
          * @param  function callback_f    Callback to invoke
          * @param  string   callback_t    Text to use in callback
