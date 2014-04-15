@@ -274,11 +274,11 @@
                 .append( $type_zone );
 
             // Special keys to add a tag
-            add_keys = {
-                comma:    188,
-                enter:    13,
-                spacebar: 32,
-            };
+            add_keys = { enter: 13, comma: 188 };
+            
+            if( !data_settings["no-spacebar"] ) {
+              add_keys["spacebar"] = 32;
+            }             
 
             // Special keys to remove last tag
             remove_keys = {
