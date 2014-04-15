@@ -207,8 +207,8 @@
 
             // Creating a new div for the new tag
             $tag = $( document.createElement( "div" ) )
-                        .addClass( "tag" )
-                        .html( "<span>#</span> " + text );
+                        .addClass( actual_settings["tag-class"] )
+                        .html( "<span>" + actual_settings["tag-char"] + "</span> " + text );
 
             // Creating and Appending hidden input
             $( document.createElement( "input" ) )
