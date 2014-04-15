@@ -42,7 +42,7 @@
             "close-char": "&times;",                        // Single Tag close char
             "close-class": "tag-i",                         // Single Tag close class
             "edit-on-delete": true,                         // True to edit tag that has just been removed from tag box
-            "forbidden-chars": [ ".", "_", "?" ],           // Array of forbidden characters
+            "forbidden-chars": [ "," , ".", "_", "?" ],     // Array of forbidden characters
             "forbidden-chars-callback": window.alert,       // Function to call when there is a forbidden chars
             "forbidden-chars-text": "Forbidden character:", // Basic text passed to forbidden-chars callback
             "forbidden-words": [],                          // Array of forbidden words
@@ -99,7 +99,7 @@
         };
 
         /**
-         * Remov a tag
+         * Remove a tag
          *
          * @param  function callback_f    Callback to invoke
          * @param  string   callback_t    Text to use in callback
@@ -275,10 +275,10 @@
 
             // Special keys to add a tag
             add_keys = { enter: 13, comma: 188 };
-            
+        
             if( !data_settings["no-spacebar"] ) {
-              add_keys["spacebar"] = 32;
-            }             
+                add_keys.spacebar = 32;
+            }
 
             // Special keys to remove last tag
             remove_keys = {
@@ -434,12 +434,4 @@
         return this;
     };
 
-})( window.jQuery, window, document );
-
-// jQuery on Ready example
-(function( $, window, document ) {
-    $( document ).ready(function() {
-        var t = $( "#tag" ).tagging();
-        console.log( t.addClass( "form-control" ) );
-    });
 })( window.jQuery, window, document );
