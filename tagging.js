@@ -62,7 +62,7 @@
             "tag-class": "tag",                             // Single Tag class
             "tags-input-name": "tag",                       // Name to use as name="" in single tags (by default tag[])
             "type-zone-class": "type-zone",                 // Class of the type-zone
-            "type-zone-placeholder": "",                    // Placeholder for the type-zone
+            "type-zone-placeholder": " ",                    // Placeholder for the type-zone
         };
 
         // Overwriting default settings with Object passed by user
@@ -267,7 +267,7 @@
             // Create the type_zone input using custom class and contenteditable attribute
             $type_zone = $( document.createElement( "input" ) )
                              .addClass( data_settings[ "type-zone-class" ] )
-                             .attr( "placeholder", data_settings[ "type-zone-placeholder" ])
+                             .attr( "placeholder", data_settings[ "type-zone-placeholder" ] )
                              .attr( "contenteditable", true );
 
             // Adding tagging class and appending the type zone
