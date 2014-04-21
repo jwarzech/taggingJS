@@ -62,6 +62,7 @@
             "tag-class": "tag",                             // Single Tag class
             "tags-input-name": "tag",                       // Name to use as name="" in single tags (by default tag[])
             "type-zone-class": "type-zone",                 // Class of the type-zone
+            "type-zone-placeholder": "",                    // Placeholder for the type-zone
         };
 
         // Overwriting default settings with Object passed by user
@@ -215,6 +216,7 @@
                 .attr( "type", "hidden" )
                 // custom input name
                 .attr( "name", actual_settings[ "tags-input-name" ] + "[]" )
+                .attr( "placeholder", actual_settings[ "type-zone-placeholder" ])
                 .val( text )
                 .appendTo( $tag );
 
