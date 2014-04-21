@@ -216,7 +216,6 @@
                 .attr( "type", "hidden" )
                 // custom input name
                 .attr( "name", actual_settings[ "tags-input-name" ] + "[]" )
-                .attr( "placeholder", actual_settings[ "type-zone-placeholder" ])
                 .val( text )
                 .appendTo( $tag );
 
@@ -268,6 +267,7 @@
             // Create the type_zone input using custom class and contenteditable attribute
             $type_zone = $( document.createElement( "input" ) )
                              .addClass( data_settings[ "type-zone-class" ] )
+                             .attr( "placeholder", data_settings[ "type-zone-placeholder" ])
                              .attr( "contenteditable", true );
 
             // Adding tagging class and appending the type zone
