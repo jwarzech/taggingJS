@@ -28,7 +28,7 @@
         var $this,
             settings, default_options,
             tags,
-            fill_data_options, add_tag, error;
+            fill_data_options, add_tag, remove_tag, error;
 
         // Saving for very slight optimization
         $this = $( this );
@@ -62,7 +62,9 @@
             "tag-class": "tag",                             // Single Tag class
             "tags-input-name": "tag",                       // Name to use as name="" in single tags (by default tag[])
             "type-zone-class": "type-zone",                 // Class of the type-zone
-            "type-zone-placeholder": " ",                    // Placeholder for the type-zone
+            "type-zone-placeholder": " ",                   // Placeholder for the type-zone
+            "tag-added-callback": null,                      // Function to call when a tag has been added
+            "tag-removed-callback": null                    // Function to call when a tag has been removed
         };
 
         // Overwriting default settings with Object passed by user
@@ -228,7 +230,7 @@
                 .html( actual_settings[ "close-char" ] )
                 // click addEventListener
                 .click(function() {
-                    $tag.remove();
+                  remove_tag($tag, actual_settings);
                 })
                 // finally append close button to tag element
                 .appendTo( $tag );
@@ -241,10 +243,33 @@
 
             // Adding tag in the type zone
             $type_zone.before( $tag );
+            
+            // Trigger callback that a new tag has been added
+            if ( actual_settings[ "tag-added-callback" ] ) {
+              actual_settings[ "tag-added-callback" ].call(this, $tag, $tag.pure_text)
+            }
 
             return false;
         };
 
+        /**
+         * Remove a tag from the tag_box
+         *
+         * @param  $_Obj     $tag         jQuery Object for the tag
+         */
+        remove_tag = function( $tag, actual_settings ) {
+          // If there are no specific settings, use the ones defined at the top
+          actual_settings = actual_settings || settings;
+          
+          // Remove the tag from the DOM
+          $tag.remove();
+          
+          // Trigger callback that a tag has been removed
+          if ( actual_settings[ "tag-removed-callback" ] ) {
+            actual_settings[ "tag-removed-callback" ].call(this, $tag, $tag.pure_text)
+          }          
+        };
+        
         // For each 'tag_box' (caught with user's jQuery selector)
         $this.each(function() {
 
@@ -340,7 +365,7 @@
                                     if ( $last_tag !== undefined ) {
 
                                         // Removing last tag
-                                        $last_tag.remove();
+                                        remove_tag($last_tag, data_settings)
 
                                         // If you want to change the text when a tag is deleted
                                         if ( data_settings[ "edit-on-delete" ] ) {
