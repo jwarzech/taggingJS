@@ -230,7 +230,7 @@
                 .html( actual_settings[ "close-char" ] )
                 // click addEventListener
                 .click(function() {
-                  remove_tag($tag, actual_settings);
+                    remove_tag($tag, actual_settings);
                 })
                 // finally append close button to tag element
                 .appendTo( $tag );
@@ -246,7 +246,7 @@
             
             // Trigger callback that a new tag has been added
             if ( actual_settings[ "tag-added-callback" ] ) {
-              actual_settings[ "tag-added-callback" ].call(this, $tag, $tag.pure_text)
+                actual_settings[ "tag-added-callback" ].call(this, $tag, $tag.pure_text);
             }
 
             return false;
@@ -258,16 +258,16 @@
          * @param  $_Obj     $tag         jQuery Object for the tag
          */
         remove_tag = function( $tag, actual_settings ) {
-          // If there are no specific settings, use the ones defined at the top
-          actual_settings = actual_settings || settings;
+            // If there are no specific settings, use the ones defined at the top
+            actual_settings = actual_settings || settings;
           
-          // Remove the tag from the DOM
-          $tag.remove();
+            // Remove the tag from the DOM
+            $tag.remove();
           
-          // Trigger callback that a tag has been removed
-          if ( actual_settings[ "tag-removed-callback" ] ) {
-            actual_settings[ "tag-removed-callback" ].call(this, $tag, $tag.pure_text)
-          }          
+            // Trigger callback that a tag has been removed
+            if ( actual_settings[ "tag-removed-callback" ] ) {
+                actual_settings[ "tag-removed-callback" ].call(this, $tag, $tag.pure_text);
+            }
         };
         
         // For each 'tag_box' (caught with user's jQuery selector)
@@ -365,7 +365,7 @@
                                     if ( $last_tag !== undefined ) {
 
                                         // Removing last tag
-                                        remove_tag($last_tag, data_settings)
+                                        remove_tag($last_tag, data_settings);
 
                                         // If you want to change the text when a tag is deleted
                                         if ( data_settings[ "edit-on-delete" ] ) {
